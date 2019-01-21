@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-3 col-sm-6 col-xs-12 col-md-offset-3">
+    <div class="item">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <img src ="<%= @item.image_url %>" alt="">
+        </div>
+        <div class="panel-body">
+          <p class="item-title"><%= @item.name %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="want-users">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          Wantしたユーザ
+        </div>
+        <div class="panel-body">
+          <% @want_users.each do |user| %>
+            <%= link_to user.name, user_path(user) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="have-users">
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          Haveしたユーザー
+        </div>
+        <div class="panel-body">
+        </div>
+      </div>
+    </div>
+    <p class="text-center"><%= link_to '楽天詳細ページ', @item.url, target: '_blank' %></p>
+  </div>
+</div>

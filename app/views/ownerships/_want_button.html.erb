@@ -1,0 +1,13 @@
+<% if current_user.want?(item) %>
+  <%= form_tag(ownership_path(item.id), method: :delete) do %>
+    <%= hidden_field_tag :item_id, item.id %>
+    <%= hidden_field_tag :type, 'Want' %>
+    <%= submit_tag 'Unwant', class: 'btn btn-success' %>
+  <% end %>
+<% else %>
+  <%= form_tag(ownerships_path) do %>
+    <%= hidden_field_tag :item_code, item.code %>
+    <%= hidden_field_tag :type, 'Want' %>
+    <%= submit_tag 'Want it', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>

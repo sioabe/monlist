@@ -1,0 +1,2 @@
+class DeleteOwnership < ApplicationRecord
+end

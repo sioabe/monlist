@@ -6,4 +6,21 @@ class User < ApplicationRecord
                     uniqueness: {case_sensitive: false }
                     
   has_secure_password
+  has_many :ownerships
+  has_many :items, through: :ownerships #want,haveどちらのitemも取得する
+  has_many :wants
+  has_many :want_items, through: :wants, source: :item  #wantのみのitemを取得する
+  
+  def want(item)
+    self.wants.find_or_create_by(item_id: item.id)
+  end
+  
+  def unwant(item)
+    want = self.wants.find_by(item_id: item.id)
+    want.destroy if want
+  end
+
+  def want?(item)
+    self.want_items.include?(item)  #self.want_itemsでuserのwant_itemsを全て取り出し、itemが含まれていないか確認する
+  end
 end
