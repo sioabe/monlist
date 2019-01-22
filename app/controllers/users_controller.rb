@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @items = @user.items.uniq #have,wantどちらもされた商品も一つだけ表示させるuniq
     @count_want = @user.want_items.count
+    @count_have = @user.have_items.count
   end
 
   def new

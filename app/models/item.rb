@@ -6,4 +6,10 @@ class Item < ApplicationRecord
   
   has_many :ownerships
   has_many :users, through: :ownerships
+  #want
+  has_many :wants
+  has_many :want_users, through: :wants, source: :user
+  #have
+  has_many :haves, class_name:'Have'
+  has_many :have_users, through: :haves, source: :user
 end
